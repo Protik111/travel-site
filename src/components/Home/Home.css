@@ -1,0 +1,34 @@
+.home{
+    background-image: url(../../Image/Rectangle1.jpg);
+    height: 100%;
+    width: 1400px;
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.logo-container{
+    width: 90px;
+    height: 45px;
+    margin-left: 70px;
+}
+.mr-auto{
+    margin: 0px 100px;
+    
+}
+.mr-sm-2{
+    margin-left: 55px;
+    /* padding: 0px 300px; */
+}
+.nav-container{
+    margin-top: 20px;
+}
+#destination{
+    padding-right: 130px;
+    background-color: white;
+    opacity: 0.4;
+    border: 1px solid gray;
+}
+#destination::placeholder{
+    color:black;
+}
