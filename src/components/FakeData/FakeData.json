@@ -1,0 +1,23 @@
+[
+    {
+        "id" : 1,
+        "name" : "COX'S BAZAR",
+        "description" : "Cox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south.",
+        "image" : "https://i.ibb.co/3kpVYs6/cox.png",
+        "fullDes" : "Cox’s Bazar is a town on the southeast coast of Bangladesh. It’s known for its very long, sandy beachfront, stretching from Sea Beach in the north to Kolatoli Beach in the south. Aggameda Khyang monastery is home to bronze statues and centuries-old Buddhist manuscripts. South of town, the tropical rainforest of Himchari National Park has waterfalls and many birds. North, sea turtles breed on nearby Sonadia Island."
+    },
+    {
+        "id" : 2,
+        "name" : "BANDARBAN",
+        "description" : "Bandarban is a district in South-Eastern Bangladesh, and a part of the Chittagong Division. It is one of the three hill districts of Bangladesh and a part of the",
+        "image" : "https://i.ibb.co/RDS6TF7/Sreemongol.png",
+        "fullDes" : "Bandarban is a district in South-Eastern Bangladesh, and a part of the Chittagong Division.[2] It is one of the three hill districts of Bangladesh and a part of the Chittagong Hill Tracts, the others being Rangamati District and Khagrachhari District. Bandarban city is the headquarters of the Bandarban district. Bandarban district (4,479 km2) is not only the most remote district of the country, but also the least populous (population 292,900).[3] There is an army contingent at Bandarban Cantonment."
+    },
+    {
+        "id" : 3,
+        "name" : "SAJEK",
+        "description" : "Sajek an emerging tourist spot in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District. Sajek valley is known as the Queen of Hills & Roof of Rangamati.",
+        "image" : "https://i.ibb.co/HX4STdp/sundorbon.png",
+        "fullDes" : "Sajek Valley is an emerging tourist spot in Bangladesh situated among the hills of the Kasalong range of mountains in Sajek union, Baghaichhari Upazila in Rangamati District.[3] The valley is 1,476 feet (450 m) above sea level.[4] Sajek valley is known as the Queen of Hills & Roof of Rangamati. Sajek is a union located in the north of Chittagong Hill Tracts. It's under Baghaichori Upazila in Rangamati hill district, it is situated 67 kilometres (42 mi) north-east from Khagrachhari town and 95 kilometres (59 mi) north from Rangamati city."
+    }
+]

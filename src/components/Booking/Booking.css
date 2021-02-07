@@ -1,0 +1,44 @@
+.Place-container{
+    display : flex;
+    margin-top: 105px;
+}
+.booking-name p{
+    color: white;
+}
+.booking-name h1{
+    color: white;
+    font-weight: bolder;
+}
+.booking-name{
+    margin-left: 150px;
+    margin-right: 100px;
+}
+.booking-date{
+    margin-left: 70px;
+    width: 340px;
+    height: 350px;
+    background-color: white;
+    border-radius: 5px;
+}
+.booking-date input{
+    width: 100%;
+    height: 35px;
+    background-color: rgb(216, 213, 213);
+    border: none;
+    border-radius: 5px;
+}
+.location{
+    margin: 10px 20px;
+}
+.date-container{
+    display: flex;
+}
+.start-booking button{
+    padding: 10px 20px;
+    width : 90%;
+    margin-left: 20px;
+    margin-top: 7px;
+    background-color:  #FBBC04;
+    border-radius: 7px;
+    border: none;
+}

@@ -5,6 +5,7 @@ import '../Home/Home.css';
 import { useHistory } from 'react-router-dom';
 import Place from '../Place/Place';
 import ArrowRightAltIcon from '@material-ui/icons/ArrowRightAlt';
+import { Link } from 'react-router-dom';
 
 
 
@@ -30,16 +31,16 @@ const Home = () => {
         }
     ]
 
-    const history = useHistory();
+    // const history = useHistory();
 
     const [selectedPlace, setSelectedPlace] = useState(data[0]);
 
     const handleClick = (data) => {
         setSelectedPlace(data);
     }
-    const handleBooking =() => {
-        history.push( `/booking/${selectedPlace.id}`);
-    }
+    // const handleBooking =() => {
+    //     history.push( `/booking/${selectedPlace.id}`);
+    // }
 
     return (
         <div className="home">
@@ -61,7 +62,9 @@ const Home = () => {
                 <div className="col-md-4 heading">
                     <h1>{selectedPlace.name}</h1>
                     <p>{selectedPlace.description}</p>
-                    <button onClick={handleBooking} className="booking-btn">Booking <ArrowRightAltIcon></ArrowRightAltIcon></button>
+                    <Link to = {`/booking/${selectedPlace.id}`}>
+                    <button className="booking-btn">Booking <ArrowRightAltIcon></ArrowRightAltIcon></button>
+                    </Link>
                 </div>
                 <div className="pictures">
                 {
