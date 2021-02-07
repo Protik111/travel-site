@@ -32,3 +32,49 @@
 #destination::placeholder{
     color:black;
 }
+.swiperPhoto{
+    width: 200px;
+    height: 300px;
+}
+h2{
+    color:white
+}
+.swiper-container{
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      /* display: flex; */
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      -webkit-justify-content: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      -webkit-align-items: center;
+      align-items: center;
+}
+.swiper-container img{
+    border-radius: 10px;
+}
+
+.places{
+    color: white;
+}
+
+.heading{
+    color: white;
+    margin: 100px 50px;
+}
+
+.pictures{
+    margin-top: 100px;
+}
+.places-row{
+    display: flex;
+}
+.booking-btn{
+    padding: 7px 20px;
+    background-color:  #FBBC04;
+    border-radius: 7px;
+    border: none;
+}

@@ -1,0 +1,27 @@
+.img-box{
+    /* margin: 10px 0px; */
+    /* width: 205px;
+    height: 305px;
+    border-radius: 20px; */
+    float: left;
+    margin-left: 40px;
+}
+.img-box img{
+    width: 194px;
+    height: 290px;
+    border-radius: 20px;
+    z-index:1;
+    position: relative;
+}
+
+.active-place{
+    border: 3px solid #FBBC04;
+    border-radius:21px;
+}
+.img-box h4{
+    margin-left: 25px;
+    z-index:1;
+    position: relative;
+    /* bottom: 70px; */
+    color:white;
+}
