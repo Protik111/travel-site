@@ -14,6 +14,7 @@ import {
   KeyboardTimePicker,
   KeyboardDatePicker,
 } from '@material-ui/pickers';
+import { Link } from 'react-router-dom';
 
 const Booking = () => {
 
@@ -104,7 +105,9 @@ const Booking = () => {
                         </div>
                     </div>
                     <div className="start-booking">
+                    <Link to = {`/login/${id}`}>
                         <button>Start Booking</button>
+                    </Link>
                     </div>
                 </div>
             </div>

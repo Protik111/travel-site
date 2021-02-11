@@ -7,6 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import Booking from './components/Booking/Booking';
+import Login from './components/Login/Login';
 
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
 
         <Route path='/booking/:id'>
           <Booking></Booking>
+        </Route>
+
+        <Route path='/login/:selectedId'>
+          <Login></Login>
         </Route>
 
       </Switch>
