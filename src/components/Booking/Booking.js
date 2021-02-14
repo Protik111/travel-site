@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import '../Home/Home.css';
 import { Button, Navbar, Form, FormControl, Nav } from 'react-bootstrap';
@@ -15,8 +15,11 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../App';
 
 const Booking = () => {
+
+    const [loggedInUser, setLoggedInUser, booking, setBooking] = useContext(UserContext);
 
     const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
 
@@ -26,11 +29,12 @@ const Booking = () => {
 
     const {id, name} = useParams();
     const [places] = useState(data);
-    const [booking, setBooking] = useState({});
+    // const [booking, setBooking] = useState({});
 
     useEffect(() => {
         const selectedBooking = places.find(place=> place.id === parseInt(id));
         setBooking(selectedBooking);
+        // setLoggedInUser(selectedBooking);
     }, [booking])
 
     return (

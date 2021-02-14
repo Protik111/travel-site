@@ -1,0 +1,19 @@
+hr{
+    width: 80%;
+    border: 1px solid gray;
+}
+.guest{
+    margin-left: 140px;
+}
+.room-detail-1{
+    display: flex;
+    margin-left: 125px;
+    margin-top: 30px;
+}
+.room-detail-1 img{
+    width: 240px;
+    height: 195px;
+}
+.room-text{
+    margin-left: 30px;
+}

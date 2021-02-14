@@ -16,11 +16,13 @@ export const UserContext = createContext();
 
 function App() {
   const[loggedInUser, setLoggedInUser] = useState({});
+  const [booking, setBooking] = useState({});
+
 
   return (
-    <UserContext.Provider value={[loggedInUser, setLoggedInUser]}>
-      <h3>email :{loggedInUser.email}</h3>
-      <h3>Name : {loggedInUser.displayName}</h3>
+    <UserContext.Provider value={[loggedInUser, setLoggedInUser, booking, setBooking]}>
+      {/* <h3>email :{loggedInUser.email}</h3>
+      <h3>Name : {loggedInUser.displayName}</h3> */}
     <Router>
       <Switch>
         <Route exact path="/">
