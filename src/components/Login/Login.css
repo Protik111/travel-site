@@ -57,3 +57,36 @@ input::placeholder{
 .new-user a:hover{
     color: #FBBC04;
 }
+.google-facebook{
+    margin-left: 490px;
+    margin-top: 40px;
+}
+.google button{
+    width: 40%;
+    height: 30px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 30px;
+}
+.facebook button{
+    margin-top: 15px;
+    width: 40%;
+    height: 30px;
+    background-color: white;
+    border: 1px solid gray;
+    border-radius: 30px;
+    margin-bottom: 100px;
+}
+.passStatus{
+    margin-top: 10px;
+    margin-left: 560px;
+    color: red;
+    font-weight: 600;
+}
+.error{
+    /* margin-top: 10px;
+    margin-left: 440px; */
+    text-align: center;
+    color: red;
+    font-weight: 600;
+}

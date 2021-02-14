@@ -105,7 +105,7 @@ const Booking = () => {
                         </div>
                     </div>
                     <div className="start-booking">
-                    <Link to = {`/login/${id}`}>
+                    <Link to = {`/hotel/${id}`}>
                         <button>Start Booking</button>
                     </Link>
                     </div>

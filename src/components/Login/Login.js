@@ -5,6 +5,13 @@ import firebaseConfig from './firebase.config';
 import { Button, Navbar, Form, FormControl, Nav } from 'react-bootstrap';
 import logo from '../../Image/Logo.png';
 import '../Login/Login.css';
+import FacebookIcon from '@material-ui/icons/Facebook';
+// import { AiFillGoogleCircle } from 'react-icons/fa';
+import { FcGoogle } from 'react-icons/fc';
+import { useContext } from 'react';
+import { UserContext } from '../../App';
+import { useHistory, useLocation } from 'react-router-dom';
+
 
 
 firebase.initializeApp(firebaseConfig);
@@ -14,31 +21,61 @@ const Login = () => {
 
     const [user, setUser] = useState({
         isSignedIn: false,
-        name: '',
+        firstName: '',
+        lastName: '',
+        displayName: '',
         email: '',
         password: '',
         photo: '',
         error: '',
-        success: false
+        success: false,
+        confirmPassword: ''
     })
 
+    const [passStatus, setPassStatus] = useState('');
     const [newUser, setNewUser] = useState(false);
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const history = useHistory();
+    const location = useLocation();
 
+    const { from } = location.state || { from: { pathname: "/" } };
+
+    const fbProvider = new firebase.auth.FacebookAuthProvider();
+
+    const handleFbSignIn = () => {   
+    firebase.auth().signInWithPopup(fbProvider)
+    .then(function(result) {
+        const fbUser = result.user;
+        const {displayName, email, photoURL} = fbUser;
+        const newUser = {
+            name: displayName,
+            email: email || 'example@example.com'
+        }
+        setLoggedInUser(newUser);
+        setUser(newUser);
+        history.replace(from);
+        // const user = result.user;
+        // console.log('after sign in', user);
+        
+      }).catch(function(error) {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+    }
 
     const handleGoogleSignIn = () => {
-        var googleProvider = new firebase.auth.GoogleAuthProvider();
+        const googleProvider = new firebase.auth.GoogleAuthProvider();
         firebase.auth()
             .signInWithPopup(googleProvider)
             .then((result) => {
-                /** @type {firebase.auth.OAuthCredential} */
-                var credential = result.credential;
+                const {displayName, email} = result.user;
+                const newUserInfo = {name: displayName, email};
+                // const newUserInfo = {...user};
+                // setUser(newUserInfo);
+                setLoggedInUser(newUserInfo);
+                history.replace(from);
 
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                var token = credential.accessToken;
-                // The signed-in user info.
-                var user = result.user;
-                console.log(user);
-                // ...
             }).catch((error) => {
                 // Handle Errors here.
                 var errorCode = error.code;
@@ -50,6 +87,78 @@ const Login = () => {
                 // ...
             });
     }
+
+    const handleSubmit = (e) => {
+        console.log(user.email, user.password, user.firstName);
+        if(newUser && user.email && user.password && user.password === user.confirmPassword){
+            firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
+                .then( res => {
+                    const newUserInfo = {...user}
+                    // console.log(newUserInfo.name);
+                    const name = user.firstName+ ' ' +user.lastName;
+                    newUserInfo.displayName = name;
+                    updateUserProfile(name);
+                    newUserInfo.error = '';
+                    newUserInfo.success = true;
+                    setLoggedInUser(newUserInfo);
+                    setUser(newUserInfo);
+                    // console.log(loggedInUser);
+                    console.log(user.displayName);
+                    setPassStatus('');
+                    // console.log(newUserInfo);
+                    history.replace(from);
+                })
+                .catch((error) => {
+                    // var errorCode = error.code;
+                    // var errorMessage = error.message;
+                    // console.log(errorCode, errorMessage);
+    
+                    const newUserInfo = {...user}
+                    newUserInfo.error = error.message;
+                    newUserInfo.success = false;
+                    setUser(newUserInfo);
+                });
+            }
+            if(newUser && user.password != user.confirmPassword){
+                setPassStatus('Password does not match');
+            }if(user.name){
+                setLoggedInUser(e.target.value);
+            }
+    
+            if(!newUser && user.email && user.password){
+                firebase.auth().signInWithEmailAndPassword(user.email, user.password)
+                .then(res => {
+                    const newUserInfo = {...user}
+                    newUserInfo.error = '';
+                    newUserInfo.success = true;
+                    setLoggedInUser(newUserInfo);
+                    setUser(newUserInfo);
+                    history.replace(from);
+                    
+                })
+                .catch((error) => {
+                    const newUserInfo = {...user}
+                    newUserInfo.error = error.message;
+                    newUserInfo.success = false;
+                    setUser(newUserInfo);
+                });
+            }
+            e.preventDefault();
+        }
+
+        const updateUserProfile = (name) => {
+            const newUser = firebase.auth().currentUser;
+            newUser.updateProfile({
+                displayName: name,
+            })
+            .then(function() {
+                console.log('Updated profile');
+                console.log(user.displayName);
+            })
+            .catch(function(error) {
+                console.log(error)
+            });
+        }
 
 
     const handleBlur = (event) => {
@@ -101,7 +210,7 @@ const Login = () => {
             <div className="log-container">
                 <div className="log-container2">
                     <h3>{newUser? 'Sign Up' : 'Log In'}</h3>
-                    <form action="">
+                    <form action="" onSubmit={handleSubmit}>
                         {newUser && <input onBlur={handleBlur} type="text" name="firstName" id="" className="all-input" placeholder="First Name" required />}
                         <br />
                         {newUser && <input onBlur={handleBlur} type="text" name="lastName" id="" className="all-input" placeholder="Last Name" required />}
@@ -123,7 +232,20 @@ const Login = () => {
                     </div>
                 </div>
             </div>
-            <button onClick={handleGoogleSignIn}>Google Sign In</button>
+            <div className="passStatus">
+                <p>{passStatus}</p>
+            </div>
+            <div className="error">
+                <p>{user.error}</p>
+            </div>
+            <div className="google-facebook">
+                <div className="google">
+                    <button onClick={handleGoogleSignIn}><FcGoogle></FcGoogle> Continue With Google</button>
+                </div>
+                <div className="facebook">
+                    <button onClick={handleFbSignIn}><FacebookIcon></FacebookIcon> Continue With Facebook</button>
+                </div>
+            </div>
         </div>
     );
 };
