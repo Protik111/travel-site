@@ -17,3 +17,6 @@ hr{
 .room-text{
     margin-left: 30px;
 }
+.room-map{
+    display: flex;
+}

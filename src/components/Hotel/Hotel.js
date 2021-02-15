@@ -8,6 +8,7 @@ import photo1 from '../../Image/Rectangle26.png';
 import photo2 from '../../Image/Rectangle27.png';
 import photo3 from '../../Image/Rectangle28.png';
 import StarIcon from '@material-ui/icons/Star';
+import Map from '../Map/Map';
 
 
 const Hotel = () => {
@@ -36,7 +37,7 @@ const Hotel = () => {
                 <h5>Stay in {booking.name} </h5>
                 {/* <h5>id:{booking.}</h5> */}
             </div>
-            <div>
+            <div className="room-map">
                <div className="col-md-6">
                     <div className="room-detail-1">
                         <div>
@@ -76,6 +77,9 @@ const Hotel = () => {
                             <pre><StarIcon></StarIcon><b>4.9 (20)$34</b>    /night $167 total</pre>
                         </div>
                     </div>
+               </div>
+               <div className="col-md-6">
+                   <Map></Map>
                </div>
             </div>
         </div>
