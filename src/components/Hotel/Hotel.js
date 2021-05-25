@@ -28,6 +28,7 @@ const Hotel = () => {
                     <Nav.Link style={{color:'black', marginRight: '40px'}} href="#features">Destination</Nav.Link>
                     <Nav.Link style={{color:'black', marginRight: '40px'}} href="#pricing">Blog</Nav.Link>
                     <Nav.Link style={{color:'black', marginRight: '40px'}} href="#pricing">Contact</Nav.Link>
+                    <Nav.Link style={{color:'black', marginRight: '40px'}} href="#pricing">{loggedInUser.displayName}</Nav.Link>
                     </Nav>
                 </Navbar>
                 <hr/>

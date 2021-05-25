@@ -88,20 +88,37 @@ const Login = () => {
             });
     }
 
+    const updateUserProfile = (name) => {
+        console.log(name);
+        const newUser = firebase.auth().currentUser;
+        newUser.updateProfile({
+            displayName: name,
+        })
+        .then(result => {
+            console.log('Updated profile');
+            console.log(result);
+        })
+        .catch(function(error) {
+            console.log(error)
+        });
+    }
+
     const handleSubmit = (e) => {
-        console.log(user.email, user.password, user.firstName);
+        e.preventDefault();
+        // console.log(user.email, user.password, user.firstName);
         if(newUser && user.email && user.password && user.password === user.confirmPassword){
             firebase.auth().createUserWithEmailAndPassword(user.email, user.password)
                 .then( res => {
-                    const newUserInfo = {...user}
-                    // console.log(newUserInfo.name);
+                    const newUserInfo = {...res.user}
+                    console.log(res);
                     const name = user.firstName+ ' ' +user.lastName;
+                    console.log(name);
                     newUserInfo.displayName = name;
-                    updateUserProfile(name);
                     newUserInfo.error = '';
                     newUserInfo.success = true;
                     setLoggedInUser(newUserInfo);
                     setUser(newUserInfo);
+                    updateUserProfile(name);
                     // console.log(loggedInUser);
                     console.log(user.displayName);
                     setPassStatus('');
@@ -128,11 +145,12 @@ const Login = () => {
             if(!newUser && user.email && user.password){
                 firebase.auth().signInWithEmailAndPassword(user.email, user.password)
                 .then(res => {
-                    const newUserInfo = {...user}
+                    const newUserInfo = {...res.user}
                     newUserInfo.error = '';
                     newUserInfo.success = true;
                     setLoggedInUser(newUserInfo);
                     setUser(newUserInfo);
+                    console.log(newUserInfo);
                     history.replace(from);
                     
                 })
@@ -143,22 +161,9 @@ const Login = () => {
                     setUser(newUserInfo);
                 });
             }
-            e.preventDefault();
         }
 
-        const updateUserProfile = (name) => {
-            const newUser = firebase.auth().currentUser;
-            newUser.updateProfile({
-                displayName: name,
-            })
-            .then(function() {
-                console.log('Updated profile');
-                console.log(user.displayName);
-            })
-            .catch(function(error) {
-                console.log(error)
-            });
-        }
+        
 
 
     const handleBlur = (event) => {
