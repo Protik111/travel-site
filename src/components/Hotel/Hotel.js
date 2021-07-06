@@ -9,6 +9,7 @@ import photo2 from '../../Image/Rectangle27.png';
 import photo3 from '../../Image/Rectangle28.png';
 import StarIcon from '@material-ui/icons/Star';
 import Map from '../Map/Map';
+import MapExtra from '../MapExtra/MapExtra';
 
 
 const Hotel = () => {
@@ -81,6 +82,14 @@ const Hotel = () => {
                </div>
                <div className="col-md-6">
                    <Map></Map>
+                   <MapExtra
+                    isMarkerShown
+                    googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+                    loadingElement={<div style={{ height: `100%` }} />}
+                    containerElement={<div style={{ height: `400px` }} />}
+                    mapElement={<div style={{ height: `100%` }} />}
+                    >
+                   </MapExtra>
                </div>
             </div>
         </div>

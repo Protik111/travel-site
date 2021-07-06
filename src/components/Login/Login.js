@@ -112,7 +112,7 @@ const Login = () => {
                     const newUserInfo = {...res.user}
                     console.log(res);
                     const name = user.firstName+ ' ' +user.lastName;
-                    console.log(name);
+                    // console.log(name);
                     newUserInfo.displayName = name;
                     newUserInfo.error = '';
                     newUserInfo.success = true;
